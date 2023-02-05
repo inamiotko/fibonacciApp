@@ -17,6 +17,7 @@ class SaveDates(private val context: Context) {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("dates")
         val DATES_KEY = stringPreferencesKey("dates_key")
         val NUMBERS_KEY = stringPreferencesKey("numbers_key")
+        val RESULTS_KEY = stringPreferencesKey("results_key")
     }
 
     fun getData(key: Preferences.Key<String>): Flow<String?> = context.dataStore.data
@@ -30,12 +31,19 @@ class SaveDates(private val context: Context) {
         }
     }
 
-    fun saveToSharedPrefs(dates: List<String>, numbers: List<Int>, scope: CoroutineScope) {
+    fun saveToSharedPrefs(
+        dates: List<String>,
+        numbers: List<Int>,
+        results: List<Long>,
+        scope: CoroutineScope
+    ) {
         val datesToBeSaved = Gson().toJson(dates)
         val numbersToBeSaved = Gson().toJson(numbers)
+        val resultToBeSaved = Gson().toJson(results)
         scope.launch {
             saveInput(datesToBeSaved, DATES_KEY)
             saveInput(numbersToBeSaved, NUMBERS_KEY)
+            saveInput(resultToBeSaved, RESULTS_KEY)
         }
     }
 }

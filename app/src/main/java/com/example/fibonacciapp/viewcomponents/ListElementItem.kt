@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ListElementItem(date: String, number: Int) {
+fun ListElementItem(date: String, number: Int, result: Long) {
     Card(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp
@@ -31,7 +31,7 @@ fun ListElementItem(date: String, number: Int) {
                 Text(text = "Request details:", style = MaterialTheme.typography.headlineSmall)
                 Text(text = "Date: $date", style = MaterialTheme.typography.bodyLarge)
                 Text(text = "Value: $number", style = MaterialTheme.typography.bodyLarge)
-
+                Text(text = "Result: $result", style = MaterialTheme.typography.bodyLarge)
             }
         }
     }

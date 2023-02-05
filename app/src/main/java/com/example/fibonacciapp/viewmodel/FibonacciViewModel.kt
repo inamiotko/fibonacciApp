@@ -9,9 +9,9 @@ import kotlinx.coroutines.launch
 
 class FibonacciViewModel() : ViewModel() {
     private val fibonacciNumberManager = FibonacciNumberManager()
-    private val _resultStateFlow = MutableLiveData<Int?>()
+    private val _resultStateFlow = MutableLiveData<Long?>()
 
-    val resultStateFlow: LiveData<Int?>
+    val resultStateFlow: LiveData<Long?>
         get() = _resultStateFlow
 
     fun calculate(input: Int) {
