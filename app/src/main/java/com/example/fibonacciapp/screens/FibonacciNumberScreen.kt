@@ -50,7 +50,7 @@ fun FibonacciNumberScreen() {
     val results = dataStore.getData(SaveDates.RESULTS_KEY).collectAsState(initial = "").value
 
     TopAppBar(
-        title = { androidx.compose.material.Text(text = "Fibonacci app") },
+        title = { androidx.compose.material.Text(text = "Calculate n'th number of Fibonacci series") },
         Modifier.fillMaxWidth(),
         backgroundColor = Color.Gray
     )
