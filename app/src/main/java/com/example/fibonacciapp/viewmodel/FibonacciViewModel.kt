@@ -6,12 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fibonacciapp.helpers.FibonacciNumberManager
 import kotlinx.coroutines.launch
+import java.math.BigInteger
 
 class FibonacciViewModel() : ViewModel() {
     private val fibonacciNumberManager = FibonacciNumberManager()
-    private val _resultStateFlow = MutableLiveData<Long?>()
+    private val _resultStateFlow = MutableLiveData<BigInteger?>()
 
-    val resultStateFlow: LiveData<Long?>
+    val resultStateFlow: LiveData<BigInteger?>
         get() = _resultStateFlow
 
     fun calculate(input: Int) {

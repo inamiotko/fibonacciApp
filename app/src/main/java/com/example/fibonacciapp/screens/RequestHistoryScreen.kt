@@ -16,6 +16,7 @@ import com.example.fibonacciapp.helpers.SaveDates.Companion.NUMBERS_KEY
 import com.example.fibonacciapp.helpers.SaveDates.Companion.RESULTS_KEY
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.math.BigInteger
 
 @Composable
 fun RequestHistoryScreen() {
@@ -26,7 +27,7 @@ fun RequestHistoryScreen() {
     val results = dataStore.getData(RESULTS_KEY).collectAsState(initial = "").value
     var datesList by remember { mutableStateOf(emptyList<String>()) }
     var numbersList by remember { mutableStateOf(emptyList<Int>()) }
-    var resultsList by remember { mutableStateOf(emptyList<Long>()) }
+    var resultsList by remember { mutableStateOf(emptyList<BigInteger>()) }
 
     Column {
         TopAppBar(
@@ -40,8 +41,8 @@ fun RequestHistoryScreen() {
             numbersList = Gson().fromJson<List<Int>?>(
                 numbers, object : TypeToken<List<Int>>() {}.type
             )
-            resultsList = Gson().fromJson<List<Long>?>(
-                results, object : TypeToken<List<Long>>() {}.type
+            resultsList = Gson().fromJson<List<BigInteger>?>(
+                results, object : TypeToken<List<BigInteger>>() {}.type
             )
         }
         Box(modifier = Modifier.fillMaxSize()) {

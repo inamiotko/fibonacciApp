@@ -10,9 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import java.math.BigInteger
 
 @Composable
-fun ListElementItem(date: String, number: Int, result: Long) {
+fun ListElementItem(date: String, number: Int, result: BigInteger) {
     Card(
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp

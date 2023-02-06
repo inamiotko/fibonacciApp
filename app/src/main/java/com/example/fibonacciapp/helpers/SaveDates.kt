@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import java.math.BigInteger
 
 class SaveDates(private val context: Context) {
     companion object {
@@ -31,10 +32,10 @@ class SaveDates(private val context: Context) {
         }
     }
 
-    fun saveToSharedPrefs(
+    fun saveToDataStore(
         dates: List<String>,
         numbers: List<Int>,
-        results: List<Long>,
+        results: List<BigInteger>,
         scope: CoroutineScope
     ) {
         val datesToBeSaved = Gson().toJson(dates)
