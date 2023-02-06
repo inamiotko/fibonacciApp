@@ -16,4 +16,4 @@ basically datastore is replacing drawbacks shared preferences had
 
 - Filtering of input -> to avoid wrong input types (using isDigitOnly) simple, clean solution.
 
-
+- Design -> as simple and as functional as possible with a hope that the overall app is intuitive
