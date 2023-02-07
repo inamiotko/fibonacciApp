@@ -8,8 +8,7 @@ algorithm was picked because of the cache mechanism -> basically the mechanism a
 values, so it returns precomputed values very quick.
 
 - Usage of BigInteger as a return value in function calculating fibonacci values -> as the goal of this assignment was to use arbitrary numbers the decision was made to use BigInteger because those are described in the docs as
-''Immutable arbitrary-precision integers'', also as this project was an experiment for me I implemented this as Int and as Long on the way, only then I realised that it's 
-not going to be enough if bigger numbers will be requested.
+''Immutable arbitrary-precision integers'', also as this project was an experiment for me I implemented this as Int and as Long on the way, only then I realised that it's not going to be enough if bigger numbers will be requested.
 
 - Uage of DataStore instead of SharedPreferences to keep data between sessions -> after reading this article https://android-developers.googleblog.com/2020/09/prefer-storing-data-with-jetpack.html
 basically datastore is replacing drawbacks shared preferences had
@@ -19,3 +18,6 @@ basically datastore is replacing drawbacks shared preferences had
 - Design -> as simple and as functional as possible with a hope that the overall app is intuitive
 
 - Toast message on wrong input -> wrong input (e.g. letters, special signs, spaces) replaces the input under the hoood ot number 1 for simplicity
+
+- Extension functions -> to centralize the code better and reuse methods for converting json strings to lists
+
