@@ -1,10 +1,13 @@
 package com.example.fibonacciapp.screens
 
+import AppBar
 import android.widget.Toast
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.TopAppBar
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -14,7 +17,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
@@ -22,11 +24,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.fibonacciapp.helpers.SaveDates
-import com.example.fibonacciapp.helpers.intoInt
+import com.example.fibonacciapp.helpers.*
 import com.example.fibonacciapp.viewmodel.FibonacciViewModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import java.math.BigInteger
 import java.util.*
 
@@ -49,27 +48,17 @@ fun FibonacciNumberScreen() {
     val numbers = dataStore.getData(SaveDates.NUMBERS_KEY).collectAsState(initial = "").value
     val results = dataStore.getData(SaveDates.RESULTS_KEY).collectAsState(initial = "").value
 
-    TopAppBar(
-        title = { androidx.compose.material.Text(text = "Calculate n'th number of Fibonacci series") },
-        Modifier.fillMaxWidth(),
-        backgroundColor = Color.Gray
-    )
+
+    AppBar(title = "Calculate nth number of Fibonacci series")
     Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
         if (dates != "" && numbers != "" && results != "") {
-            requestDate = Gson().fromJson<List<String>?>(
-                dates, object : TypeToken<List<String>>() {}.type
-            )
-            requestedNumber = Gson().fromJson<List<Int>?>(
-                numbers, object : TypeToken<List<Int>>() {}.type
-            )
-            requestedResult = Gson().fromJson<List<BigInteger>?>(
-                results, object : TypeToken<List<BigInteger>>() {}.type
-            )
+            requestDate = dates.intoListOfString()
+            requestedNumber = numbers.intoListOfInt()
+            requestedResult = results.intoListOfBigInt()
         }
         OutlinedTextField(
             value = inputNumber,
