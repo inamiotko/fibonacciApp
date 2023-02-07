@@ -14,6 +14,8 @@ not going to be enough if bigger numbers will be requested.
 - Uage of DataStore instead of SharedPreferences to keep data between sessions -> after reading this article https://android-developers.googleblog.com/2020/09/prefer-storing-data-with-jetpack.html
 basically datastore is replacing drawbacks shared preferences had
 
-- Filtering of input -> to avoid wrong input types (using isDigitOnly) simple, clean solution.
+- Filtering of input -> to avoid wrong input types (using isDigitOnly) simple, clean solution
 
 - Design -> as simple and as functional as possible with a hope that the overall app is intuitive
+
+- Toast message on wrong input -> wrong input (e.g. letters, special signs, spaces) replaces the input under the hoood ot number 1 for simplicity
