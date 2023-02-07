@@ -21,3 +21,7 @@ basically datastore is replacing drawbacks shared preferences had
 
 - Extension functions -> to centralize the code better and reuse methods for converting json strings to lists
 
+##Screenshots of the app
+|![image](https://user-images.githubusercontent.com/56221715/217261387-0293d344-44cc-4812-8a98-58c0763a8c1d.png)|![image](https://user-images.githubusercontent.com/56221715/217261638-f366f4e6-396a-4661-aec2-1ee89991751b.png)|
+|----|---|
+|![image](https://user-images.githubusercontent.com/56221715/217261828-1aee8724-773c-4657-840f-bb6c9fd50623.png)|![image](https://user-images.githubusercontent.com/56221715/217261914-d6af1221-d260-4391-a701-fc72ec7f3028.png)|
