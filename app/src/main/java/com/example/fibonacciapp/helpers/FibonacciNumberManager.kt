@@ -2,7 +2,7 @@ package com.example.fibonacciapp.helpers
 
 import java.math.BigInteger
 
-class FibonacciNumberManager() {
+class FibonacciNumberManager {
     fun getFibonacciNumber(input: Int): BigInteger? {
         val mapOfNumbers = HashMap<Int, BigInteger>()
         mapOfNumbers[0] = BigInteger("0")

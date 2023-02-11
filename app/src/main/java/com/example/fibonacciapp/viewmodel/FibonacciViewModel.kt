@@ -8,7 +8,7 @@ import com.example.fibonacciapp.helpers.FibonacciNumberManager
 import kotlinx.coroutines.launch
 import java.math.BigInteger
 
-class FibonacciViewModel() : ViewModel() {
+class FibonacciViewModel : ViewModel() {
     private val fibonacciNumberManager = FibonacciNumberManager()
     private val _resultStateFlow = MutableLiveData<BigInteger?>()
 

@@ -31,7 +31,13 @@ fun BottomNavigation(navController: NavController) {
         val currentDestination = navBackStackEntry?.destination
         items.forEach { screen ->
             BottomNavigationItem(
-                icon = { Icon(painter= painterResource(screen.icon), "", modifier = Modifier.size(22.dp)) },
+                icon = {
+                    Icon(
+                        painter = painterResource(screen.icon),
+                        "",
+                        modifier = Modifier.size(22.dp)
+                    )
+                },
                 label = { Text(screen.title) },
                 selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                 onClick = {
