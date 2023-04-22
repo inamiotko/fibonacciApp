@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -29,7 +28,7 @@ import com.example.fibonacciapp.viewmodel.FibonacciViewModel
 import java.math.BigInteger
 import java.util.*
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun FibonacciNumberScreen() {
     var inputNumber by remember { mutableStateOf("") }
@@ -41,12 +40,11 @@ fun FibonacciNumberScreen() {
     var requestDate by remember { mutableStateOf(emptyList<String>()) }
     var requestedResult by remember { mutableStateOf(emptyList<BigInteger>()) }
     val scope = rememberCoroutineScope()
-    val dataStore = SaveDates(ctx)
     val viewModel: FibonacciViewModel = viewModel()
     val resultState = viewModel.resultStateFlow.observeAsState(initial = BigInteger("0"))
-    val dates = dataStore.getData(SaveDates.DATES_KEY).collectAsState(initial = "").value
-    val numbers = dataStore.getData(SaveDates.NUMBERS_KEY).collectAsState(initial = "").value
-    val results = dataStore.getData(SaveDates.RESULTS_KEY).collectAsState(initial = "").value
+    val dates = viewModel.dates.collectAsState(initial = "").value
+    val numbers = viewModel.numbers.collectAsState(initial = "").value
+    val results = viewModel.results.collectAsState(initial = "").value
 
 
     AppBar(title = "Calculate nth number of Fibonacci series")
@@ -90,7 +88,7 @@ fun FibonacciNumberScreen() {
             requestedNumber += input
             requestDate += dateTime
             requestedResult += result
-            dataStore.saveToDataStore(requestDate, requestedNumber, requestedResult, scope)
+            viewModel.saveToDataStore(requestDate, requestedNumber, requestedResult, scope)
         }) {
             Text(text = "Get value")
         }

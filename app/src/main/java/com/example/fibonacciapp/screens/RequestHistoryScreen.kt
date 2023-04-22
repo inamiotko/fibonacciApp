@@ -8,24 +8,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.example.fibonacciapp.helpers.SaveDates
-import com.example.fibonacciapp.helpers.SaveDates.Companion.DATES_KEY
-import com.example.fibonacciapp.helpers.SaveDates.Companion.NUMBERS_KEY
-import com.example.fibonacciapp.helpers.SaveDates.Companion.RESULTS_KEY
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fibonacciapp.helpers.intoListOfBigInt
 import com.example.fibonacciapp.helpers.intoListOfInt
 import com.example.fibonacciapp.helpers.intoListOfString
+import com.example.fibonacciapp.viewmodel.FibonacciViewModel
 import java.math.BigInteger
 
 @Composable
 fun RequestHistoryScreen() {
-    val ctx = LocalContext.current
-    val dataStore = SaveDates(ctx)
-    val dates = dataStore.getData(DATES_KEY).collectAsState(initial = "").value
-    val numbers = dataStore.getData(NUMBERS_KEY).collectAsState(initial = "").value
-    val results = dataStore.getData(RESULTS_KEY).collectAsState(initial = "").value
+    val viewModel: FibonacciViewModel = viewModel()
+    val dates = viewModel.dates.collectAsState(initial = "").value
+    val numbers = viewModel.numbers.collectAsState(initial = "").value
+    val results = viewModel.results.collectAsState(initial = "").value
     var datesList by remember { mutableStateOf(emptyList<String>()) }
     var numbersList by remember { mutableStateOf(emptyList<Int>()) }
     var resultsList by remember { mutableStateOf(emptyList<BigInteger>()) }

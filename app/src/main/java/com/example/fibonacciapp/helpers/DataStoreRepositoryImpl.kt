@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.math.BigInteger
 
-class SaveDates(private val context: Context) {
+class DataStoreRepositoryImpl(private val context: Context) : DataStoreRepository {
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore("dates")
         val DATES_KEY = stringPreferencesKey("dates_key")
@@ -21,7 +21,7 @@ class SaveDates(private val context: Context) {
         val RESULTS_KEY = stringPreferencesKey("results_key")
     }
 
-    fun getData(key: Preferences.Key<String>): Flow<String?> = context.dataStore.data
+    override fun getData(key: Preferences.Key<String>): Flow<String?> = context.dataStore.data
         .map { preferences ->
             preferences[key] ?: ""
         }
@@ -32,7 +32,7 @@ class SaveDates(private val context: Context) {
         }
     }
 
-    fun saveToDataStore(
+    override fun saveToDataStore(
         dates: List<String>,
         numbers: List<Int>,
         results: List<BigInteger>,
