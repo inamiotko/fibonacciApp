@@ -11,7 +11,6 @@ class FibonacciNumberManager {
         for (x in 3..input) {
             mapOfNumbers[x] = mapOfNumbers[x - 1]!! + mapOfNumbers[x - 2]!!
         }
-        
         return mapOfNumbers[input]
     }
 }
